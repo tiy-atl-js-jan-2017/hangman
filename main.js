@@ -10,3 +10,14 @@ var guesses = [];
 var answer = wordBank[Math.floor(Math.random() * wordBank.length)];
 
 console.log(answer);
+console.log(answer.length);
+
+function drawBoard (word) {
+  var boardBox = document.querySelector(".board");
+  for (var count = 0; count < word.length; count++) {
+    var newBlank = "<div>_</div>";
+    boardBox.innerHTML += newBlank;
+  }
+}
+
+drawBoard(answer);
