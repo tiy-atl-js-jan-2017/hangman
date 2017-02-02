@@ -46,7 +46,7 @@ function takeTurn (letter) {
 function handleGuess (letter) {
   guesses.push(letter);
   if (includes(answer, letter)) {
-    // display the letter
+    showLetter(letter);
   } else {
     turnCount -= 1;
   }
@@ -60,3 +60,36 @@ function includes (container, thing) {
   }
   return false;
 }
+
+function showLetter (letter) {
+  var blanks = document.querySelectorAll(".board div");
+  for (var i = 0; i < answer.length; i++) {
+    if (letter === answer[i]) {
+      blanks[i].innerHTML = letter;
+    }
+  }
+}
+
+function isWinner () {
+  var blanks = document.querySelectorAll(".board div");
+  for (var count = 0; count < blanks.length; count++) {
+    var letterBox = blanks[count];
+    if (letterBox.innerHTML === "_") {
+      return false;
+    }
+  }
+  return true;
+}
+
+function checkGameOver () {
+  if (isWinner()) {
+    alert("Congrats! You won!");
+  } else if (turnCount === 0) {
+    alert("Sorry! You lost sucka!");
+  }
+}
+
+// function checkGameOverIncludes () {
+//   var blanks = document.querySelectorAll(".board div");
+//   return !includes(blanks, "_");
+// }
