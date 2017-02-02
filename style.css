@@ -36,3 +36,8 @@
     border: 1px solid lightblue;
     margin: 10px;
 }
+
+.guessed {
+    color: blue;
+    background: black;
+}
