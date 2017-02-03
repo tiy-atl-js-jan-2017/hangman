@@ -1,3 +1,31 @@
+// TODO
+// * Investigate why I couldn't use includes for gameOver
+// * Take out old console.logs
+// * Fix bug in click handler for the whole alphabet
+
+
+for (var count = 0; count < items.length; count++) {
+  var data = items[count];
+  console.log(data.price);
+}
+
+var nums = [1, 2, 3, 5, 8, 10];
+
+for (var count = 0; count < nums.length; count++) {
+  console.log(nums[count] * 2);
+}
+
+var names = ['brit', 'tj', 'dom', 'tim', 'lindsey'];
+var greetings = [];
+for (var count = 0; count < names.length; count++) {
+  greetings.push("Hello, " + names[count]);
+}
+
+
+
+
+
+
 var wordBank = [
   "coffee", "bourbon", "sleep", "iron",
   "yard", "challenges", "games", "weekends",
@@ -35,7 +63,7 @@ function processClick (event) {
 function takeTurn (letter) {
   // alreadyGuessed should take a letter and return true/false
   // based on if it is in the guesses array or not
-  if (includes(guesses, letter)) {
+  if (includes(guesses, function (x) { return x === letter; })) {
     alert("You already guessed that!");
   } else {
     handleGuess(letter);
@@ -45,20 +73,11 @@ function takeTurn (letter) {
 
 function handleGuess (letter) {
   guesses.push(letter);
-  if (includes(answer, letter)) {
+  if (includes(answer, function (x) { return x === letter; })) {
     showLetter(letter);
   } else {
     turnCount -= 1;
   }
-}
-
-function includes (container, thing) {
-  for (var count = 0; count < container.length; count++) {
-    if (container[count] === thing) {
-      return true;
-    }
-  }
-  return false;
 }
 
 function showLetter (letter) {
@@ -70,15 +89,53 @@ function showLetter (letter) {
   }
 }
 
-function isWinner () {
-  var blanks = document.querySelectorAll(".board div");
-  for (var count = 0; count < blanks.length; count++) {
-    var letterBox = blanks[count];
-    if (letterBox.innerHTML === "_") {
-      return false;
+/*
+ HOFs that are relevant to you!
+
+ forEach() callback(x) -> undefined
+  // it doesn't return anything to you, so no need to return in your callback
+
+ map()     callback(x) -> [x]
+  // make sure you return a value in your callback, and save the result from map in a variable
+
+ filter()  callback(x) -> [x] (smaller)
+  // make sure you return a true or false value, and save the result from filter in a variable
+  // NOTE: filter uses your callback to decide whether or not to keep an item, it doesn't keep what you return.
+  // Just return *true* or *false*
+
+ */
+
+
+function any (container, test) {
+  // Does anything in container pass "test"?
+  for (var count = 0; count < container.length; count++) {
+    var currentItem = container[count];
+    if (test(currentItem)) {
+      return true;
     }
   }
-  return true;
+  return false;
+}
+
+function forEach (array, action) {
+  for (var i = 0; i < array.length; i++) {
+    action(array[i]);
+  }
+}
+
+var nums = [1,2,3,4,5];
+var squares = nums.map(function (x) { return x * x; });
+var names = ["tim", "dom", "tj", "brit"];
+var longerNames = names.filter(function (x) { return x.length > 3; });
+
+
+function isBlank (element) {
+  return element.innerHTML === "_";
+}
+
+function isWinner () {
+  var blanks = document.querySelectorAll(".board div");
+  return !includes(blanks, isBlank);
 }
 
 function checkGameOver () {
