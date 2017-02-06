@@ -106,7 +106,7 @@ function showLetter (letter) {
  */
 
 
-function any (container, test) {
+function includes (container, test) {
   // Does anything in container pass "test"?
   for (var count = 0; count < container.length; count++) {
     var currentItem = container[count];
@@ -150,3 +150,17 @@ function checkGameOver () {
 //   var blanks = document.querySelectorAll(".board div");
 //   return !includes(blanks, "_");
 // }
+
+var count = 0;
+var helloInterval;
+
+function hi100Times () {
+  if (count === 100) {
+    clearInterval(helloInterval);
+  } else {
+    console.log("Hi!");
+    count++;
+  }
+}
+
+helloInterval = setInterval(hi100Times, 200);

@@ -1,0 +1,56 @@
+$bg-color: darken(grey, 10%);
+
+@mixin floated-box ($size, $border-size) {
+    height: $size;
+    width: $size;
+    display: inline-block;
+    border: $border-size solid lightgrey;
+}
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.container {
+    margin: 50px auto;
+    width: 750px;
+}
+
+.letter {
+    @include floated-box(35px, 1px);
+    margin: 8px;
+    padding-top: 1%;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.board {
+    padding-top: 40px;
+    text-align: center;
+    /* vertical-align: bottom; */
+    font-size: 20px;
+    font-weight: bold;
+
+    div {
+        @include floated-box(50px, 3px);
+        margin: 10px;
+    }
+}
+
+.guessed {
+    color: blue;
+    background: $bg-color;
+}
+
+article[role="main"] {
+  float: left;
+  width: 600px / 960px * 100%;
+}
+
+aside[role="complimentary"] {
+  float: right;
+  width: 300px / 960px * 100%;
+}

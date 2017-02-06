@@ -1,43 +1,44 @@
 * {
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-}
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box; }
 
 .container {
-    width: 750px;
-    margin: 50px 250px;
-}
+  margin: 50px auto;
+  width: 750px; }
 
 .letter {
-    width: 40px;
-    height: 30px;
-    margin: 5px;
-    display: inline-block;
-    border: 1px solid lightgrey;
-    padding-top: 1%;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-}
+  height: 35px;
+  width: 35px;
+  display: inline-block;
+  border: 1px solid lightgrey;
+  margin: 8px;
+  padding-top: 1%;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center; }
 
 .board {
-    padding-top: 40px;
-    text-align: center;
-    /* vertical-align: bottom; */
-    font-size: 20px;
-    font-weight: bold;
-}
-
-.board div {
+  padding-top: 40px;
+  text-align: center;
+  /* vertical-align: bottom; */
+  font-size: 20px;
+  font-weight: bold; }
+  .board div {
+    height: 50px;
+    width: 50px;
     display: inline-block;
-    width: 60px;
-    height: 60px;
-    border: 1px solid lightblue;
-    margin: 10px;
-}
+    border: 3px solid lightgrey;
+    margin: 10px; }
 
 .guessed {
-    color: blue;
-    background: black;
-}
+  color: blue;
+  background: #676767; }
+
+article[role="main"] {
+  float: left;
+  width: 62.5%; }
+
+aside[role="complimentary"] {
+  float: right;
+  width: 31.25%; }
