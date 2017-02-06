@@ -3,29 +3,6 @@
 // * Take out old console.logs
 // * Fix bug in click handler for the whole alphabet
 
-
-for (var count = 0; count < items.length; count++) {
-  var data = items[count];
-  console.log(data.price);
-}
-
-var nums = [1, 2, 3, 5, 8, 10];
-
-for (var count = 0; count < nums.length; count++) {
-  console.log(nums[count] * 2);
-}
-
-var names = ['brit', 'tj', 'dom', 'tim', 'lindsey'];
-var greetings = [];
-for (var count = 0; count < names.length; count++) {
-  greetings.push("Hello, " + names[count]);
-}
-
-
-
-
-
-
 var wordBank = [
   "coffee", "bourbon", "sleep", "iron",
   "yard", "challenges", "games", "weekends",
